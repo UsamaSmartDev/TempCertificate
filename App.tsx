@@ -1,8 +1,8 @@
 
 import React, { useEffect, useState } from 'react';
-import Layout from './components/Layout';
-import ResultTable from './components/ResultTable';
-import { OFFICIAL_CERTIFICATE } from './mockData';
+import Layout from './components/Layout.tsx';
+import ResultTable from './components/ResultTable.tsx';
+import { OFFICIAL_CERTIFICATE } from './mockData.ts';
 import { GoogleGenAI } from "@google/genai";
 
 const App: React.FC = () => {
@@ -12,11 +12,18 @@ const App: React.FC = () => {
   useEffect(() => {
     const fetchInsight = async () => {
       try {
-        // Safe access to process.env to prevent crashes if 'process' is undefined
-        const apiKey = typeof process !== 'undefined' ? process.env.API_KEY : null;
+        // More robust check for process.env
+        let apiKey = null;
+        try {
+          if (typeof process !== 'undefined' && process.env) {
+            apiKey = process.env.API_KEY;
+          }
+        } catch (e) {
+          console.debug("Process.env is not accessible");
+        }
         
         if (!apiKey) {
-          console.warn("API Key not found. AI insights will be disabled.");
+          console.warn("API Key not found. AI features will use fallback.");
           setLoadingInsight(false);
           return;
         }
@@ -40,10 +47,8 @@ const App: React.FC = () => {
     <Layout>
       <div className="min-h-screen bg-gray-50 py-6 md:py-12 px-4">
         <div className="max-w-4xl mx-auto shadow-xl rounded-2xl overflow-hidden bg-white border border-gray-200">
-          {/* Main Certificate Content */}
           <ResultTable record={OFFICIAL_CERTIFICATE} />
 
-          {/* AI Verification Footer Insight */}
           <div className="bg-gray-50 border-t border-gray-200 p-6 md:p-8">
             <div className="flex items-center gap-3 mb-3">
               <div className="w-2 h-2 rounded-full bg-green-500"></div>
@@ -61,7 +66,6 @@ const App: React.FC = () => {
           </div>
         </div>
         
-        {/* Help Text */}
         <div className="max-w-4xl mx-auto mt-8 text-center">
             <p className="text-gray-400 text-[10px] uppercase tracking-tighter">
               Authorized Digital Registry Access • Document ID: {OFFICIAL_CERTIFICATE.certificateNo}
