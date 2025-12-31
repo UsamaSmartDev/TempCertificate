@@ -1,7 +1,5 @@
 {
-  "name": "VerifyCert - Professional Certificate Verification System",
-  "description": "A robust and aesthetic certificate verification platform featuring searchable data tables, status indicators, and AI-powered regulatory insights using Gemini.",
-  "requestFramePermissions": [
-    "camera"
-  ]
+  "name": "VerifyCert - Static Certificate Display",
+  "description": "Professional certificate verification display page.",
+  "requestFramePermissions": []
 }

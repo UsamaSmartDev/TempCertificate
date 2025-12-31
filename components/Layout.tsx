@@ -7,25 +7,16 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div className="flex flex-col min-h-screen">
-      <header className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
+    <div className="flex flex-col min-h-screen font-sans selection:bg-green-100 selection:text-green-900">
+      <header className="bg-white border-b border-gray-100 py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16 items-center">
+          <div className="flex justify-center items-center">
             <div className="flex items-center gap-2">
-              <div className="bg-blue-600 text-white p-2 rounded-lg">
-                <i className="fas fa-shield-check text-xl"></i>
+              <div className="bg-green-600 text-white p-1.5 rounded-md">
+                <i className="fas fa-check-double text-sm"></i>
               </div>
-              <span className="text-xl font-bold text-gray-800 tracking-tight">VerifyCert</span>
+              <span className="text-lg font-bold text-gray-900 tracking-tight">Official Verification Portal</span>
             </div>
-            <nav className="hidden md:flex space-x-8 text-sm font-medium text-gray-500">
-              <a href="#" className="hover:text-blue-600 transition-colors">Home</a>
-              <a href="#" className="hover:text-blue-600 transition-colors">Query System</a>
-              <a href="#" className="hover:text-blue-600 transition-colors">Standards</a>
-              <a href="#" className="hover:text-blue-600 transition-colors">Help</a>
-            </nav>
-            <button className="md:hidden text-gray-500">
-              <i className="fas fa-bars text-xl"></i>
-            </button>
           </div>
         </div>
       </header>
@@ -34,14 +25,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         {children}
       </main>
 
-      <footer className="bg-white border-t border-gray-200 py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-sm text-gray-500">© 2025 VerifyCert Compliance Systems. All rights reserved.</p>
-          <div className="mt-4 flex justify-center space-x-6">
-            <a href="#" className="text-gray-400 hover:text-gray-600"><i className="fab fa-twitter"></i></a>
-            <a href="#" className="text-gray-400 hover:text-gray-600"><i className="fab fa-linkedin"></i></a>
-            <a href="#" className="text-gray-400 hover:text-gray-600"><i className="fab fa-github"></i></a>
-          </div>
+      <footer className="bg-white border-t border-gray-100 py-6">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <p className="text-[11px] text-gray-400 uppercase tracking-widest">© 2025 Global Compliance Standards • Secure Digital Record</p>
         </div>
       </footer>
     </div>
